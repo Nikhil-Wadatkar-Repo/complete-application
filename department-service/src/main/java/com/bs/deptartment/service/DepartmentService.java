@@ -1,4 +1,4 @@
-package com.bs.deptartment;
+package com.bs.deptartment.service;
 
 public class DepartmentService {
 }
