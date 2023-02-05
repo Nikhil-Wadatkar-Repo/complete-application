@@ -13,7 +13,7 @@ public class DepartmentService {
     private DepartmentRepo repo;
 
     public List<Department> getAllDepartments() {
-        return repo.getAllDepartments();
+        return repo.getAllDepartmentsByResultSetExtractor();
     }
 
     public Department createDepartmentByCoding(Department department) {
