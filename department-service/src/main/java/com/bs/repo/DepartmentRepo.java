@@ -23,6 +23,7 @@ public class DepartmentRepo {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    // ResultsetExtractor
     public List<Department> getAllDepartmentsByResultSetExtractor() {
 
         String sqlQuery = "select * from department";

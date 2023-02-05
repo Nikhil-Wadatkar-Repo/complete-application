@@ -19,7 +19,7 @@ public class DepartmentController {
 
     @GetMapping("/get")
     public List<Department> getAllDepartments() {
-        return departmentService.getAllDepartments();
+        return departmentService.getAllDepartmentsByResultSetExtractor();
     }
 
     @PostMapping("/create")
