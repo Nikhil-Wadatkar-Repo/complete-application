@@ -18,7 +18,7 @@ public class DepartmentController {
     }
 
     @GetMapping("/get")
-    public List<Department> getAllDepartments() {
+    public List<Department> getAllDepartmentsByResultsetExtractor() {
         return departmentService.getAllDepartmentsByResultSetExtractor();
     }
 
