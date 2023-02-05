@@ -12,6 +12,11 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
+    @GetMapping("/obj")
+    public Department department(){
+        return new Department(12,12,"asa",12);
+    }
+
     @GetMapping("/get")
     public List<Department> getAllDepartments() {
         return departmentService.getAllDepartments();
@@ -19,7 +24,9 @@ public class DepartmentController {
 
     @PostMapping("/create")
     public Department createDepartment(@RequestBody Department department) {
-        return departmentService.createDepartment(department);
+        departmentService.createDepartmentByCoding(department);
+        departmentService.createDepartmentByPreparedStatementCallback(department);
+        return null;
     }
 
     @PostMapping("/update")

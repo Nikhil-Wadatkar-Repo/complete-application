@@ -16,8 +16,11 @@ public class DepartmentService {
         return repo.getAllDepartments();
     }
 
-    public Department createDepartment(Department department) {
-        return repo.createDepartment(department);
+    public Department createDepartmentByCoding(Department department) {
+        return repo.createDepartmentByCoding(department);
+    }
+    public Department createDepartmentByPreparedStatementCallback(Department department) {
+        return repo.createDepartmentByPreparedStatementCallback(department);
     }
 
     public Department updateDepartment(Department department) {
