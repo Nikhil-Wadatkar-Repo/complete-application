@@ -26,6 +26,10 @@ public class DepartmentService {
         return repo.createDepartmentByPreparedStatementCallback(department);
     }
 
+    public void createDepartmentByNamedParamaeterJdbcTemplate(Department department) {
+         repo.createDepartmentByNamedParamaeterJdbcTemplate(department);
+    }
+
     public Department updateDepartment(Department department) {
         return repo.updateDepartment(department);
     }

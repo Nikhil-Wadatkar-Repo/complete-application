@@ -6,14 +6,17 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCallback;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class DepartmentRepo {
@@ -83,6 +86,29 @@ public class DepartmentRepo {
             }
         });
         return null;
+    }
+
+    public void createDepartmentByNamedParamaeterJdbcTemplate(Department department) {
+        int id = department.getId();
+        int monthlyBudget = department.getMonthlyBudget();
+        String name = department.getName();
+        int last = department.getLastEmployeeId();
+        String sqlQuery = "Insert into department (ID,NAME,MONTHLY_BUDGET,LAST_EMPLOYEE_ID) values (:id,:name,:monthlyBudget,:lastEmployeeId)";
+        System.out.println(sqlQuery);
+
+        //setting parameters using map collection
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", id);
+        map.put("name", name);
+        map.put("monthlyBudget", monthlyBudget);
+        map.put("lastEmployeeId", last);
+
+        Object execute = namedParameterJdbcTemplate.execute(sqlQuery, map, new PreparedStatementCallback<Object>() {
+            @Override
+            public Object doInPreparedStatement(PreparedStatement ps) throws SQLException, DataAccessException {
+                return ps.executeUpdate();
+            }
+        });
     }
 
     public Department updateDepartment(Department department) {

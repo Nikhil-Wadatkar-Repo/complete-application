@@ -26,10 +26,11 @@ public class DepartmentController {
     }
 
     @PostMapping("/create")
-    public Department createDepartment(@RequestBody Department department) {
-        departmentService.createDepartmentByCoding(department);
-        departmentService.createDepartmentByPreparedStatementCallback(department);
-        return null;
+    public List<Department> createDepartment(@RequestBody Department department) {
+//        departmentService.createDepartmentByCoding(department);
+//        departmentService.createDepartmentByPreparedStatementCallback(department);
+        departmentService.createDepartmentByNamedParamaeterJdbcTemplate(department);
+        return getAllDepartmentsByRowMapper();
     }
 
     @PostMapping("/update")
