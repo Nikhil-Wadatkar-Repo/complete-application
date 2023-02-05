@@ -23,6 +23,15 @@ public class DepartmentRepo {
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    //RowMapper code
+    public List<Department> getAllDepartmentsByRowMapper(){
+        return jdbcTemplate.query("select * from Department", new RowMapper<Department>() {
+            @Override
+            public Department mapRow(ResultSet rs, int rowNum) throws SQLException {
+                return new Department(rs.getInt(1), rs.getInt(3), rs.getString(2), rs.getInt(4));
+            }
+        });
+    }
     // ResultsetExtractor
     public List<Department> getAllDepartmentsByResultSetExtractor() {
 

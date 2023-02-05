@@ -16,7 +16,10 @@ public class DepartmentController {
     public Department department(){
         return new Department(12,12,"asa",12);
     }
-
+    @GetMapping("/getByRowmapper")
+    public List<Department> getAllDepartmentsByRowMapper() {
+        return departmentService.getAllDepartmentsByRowMapper();
+    }
     @GetMapping("/get")
     public List<Department> getAllDepartmentsByResultsetExtractor() {
         return departmentService.getAllDepartmentsByResultSetExtractor();

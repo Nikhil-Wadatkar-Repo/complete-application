@@ -15,6 +15,9 @@ public class DepartmentService {
     public List<Department> getAllDepartmentsByResultSetExtractor() {
         return repo.getAllDepartmentsByResultSetExtractor();
     }
+    public List<Department> getAllDepartmentsByRowMapper() {
+        return repo.getAllDepartmentsByRowMapper();
+    }
 
     public Department createDepartmentByCoding(Department department) {
         return repo.createDepartmentByCoding(department);
