@@ -12,7 +12,7 @@ public class DepartmentService {
     @Autowired
     private DepartmentRepo repo;
 
-    public List<Department> getAllDepartments() {
+    public List<Department> getAllDepartmentsByResultSetExtractor() {
         return repo.getAllDepartmentsByResultSetExtractor();
     }
 
