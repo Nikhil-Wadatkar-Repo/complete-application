@@ -25,7 +25,8 @@ public class DepartmentController {
         return departmentService.getAllDepartmentsByResultSetExtractor();
     }
 
-    @PostMapping("/create")
+//    @PostMapping("/create")
+    @RequestMapping(path = "/create",consumes = "application/json",produces = "application/xml")
     public List<Department> createDepartment(@RequestBody Department department) {
 //        departmentService.createDepartmentByCoding(department);
 //        departmentService.createDepartmentByPreparedStatementCallback(department);
