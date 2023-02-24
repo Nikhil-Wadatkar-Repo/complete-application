@@ -3,10 +3,14 @@ package com.bs.employee.repo;
 import com.bs.employee.beans.Employee;
 import com.bs.employee.beans.IDepartmentWiseCount;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
@@ -22,6 +26,11 @@ public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
 //@Query( value = "select department_id AS deptID, count(*) AS totalCount  from employee group by department_id",nativeQuery = true)
 //    public List<IDepartmentWiseCount> countTotalCommentsByYearInterface();
 	
-	@Query( value = "select * from employee department_id = ?1",nativeQuery = true)
-	public List<Employee> getEmployeeByDeptID(String id);
+	@Query( value = "select * from employee where DEPARTMENT_ID= :job_id",nativeQuery = true)
+	public List<Employee> getEmployeeByDeptID(@Param("job_id") String job_id);
+	
+	@Transactional
+	@Modifying
+	@Query( value = "update employee set PHONE= '111' where DEPARTMENT_ID= :job_id",nativeQuery = true)
+	public Integer updateEmployee(@Param("job_id") String job_id);
 }

@@ -18,12 +18,23 @@ public class EmployeeController {
 
     @GetMapping("/get")
     public List<Employee> getAllEmployees() throws InterruptedException {
+        return multithreadedService.getAllEmployees();
+    }
+    
+    @GetMapping("/getThread")
+    public List<Employee> getThread() throws InterruptedException {
         return multithreadedService.getAllEmployeesMultithread();
     }
+    
+    
+    @GetMapping("/update")
+    public void updateEmployees() throws InterruptedException {
+         multithreadedService.updateEmployee();
+    }
 
-    @PostMapping("/create")
-    public Employee createEmployee(@RequestBody Employee employee) {
-        return employeeService.createEmployee(employee);
+    @GetMapping("/updateThread")
+    public void updateThread() throws InterruptedException {
+    	 multithreadedService.updateEmployeeByThreads();
     }
 
 //    @PostMapping("/update")
