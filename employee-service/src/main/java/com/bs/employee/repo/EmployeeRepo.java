@@ -10,15 +10,18 @@ import java.util.List;
 
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
-
-    @Query( value = "select department_id, count(*) from employee group by department_id",nativeQuery = true)
-//    public Map<Integer,Integer> getDepartmentwiseEmployee();
-//    public List<DepartmentWiseCountDetails> getDepartmentwiseEmployee();
-    public List<Object[]> getDepartmentwiseEmployee();
-
-
-
-//    @Query("SELECT c.department_id AS deptID, COUNT(*) AS totalCount  FROM Employee AS c GROUP BY c.department_id")
-@Query( value = "select department_id AS deptID, count(*) AS totalCount  from employee group by department_id",nativeQuery = true)
-    public List<IDepartmentWiseCount> countTotalCommentsByYearInterface();
+//
+//    @Query( value = "select department_id, count(*) from employee group by department_id",nativeQuery = true)
+////    public Map<Integer,Integer> getDepartmentwiseEmployee();
+////    public List<DepartmentWiseCountDetails> getDepartmentwiseEmployee();
+//    public List<Object[]> getDepartmentwiseEmployee();
+//
+//
+//
+////    @Query("SELECT c.department_id AS deptID, COUNT(*) AS totalCount  FROM Employee AS c GROUP BY c.department_id")
+//@Query( value = "select department_id AS deptID, count(*) AS totalCount  from employee group by department_id",nativeQuery = true)
+//    public List<IDepartmentWiseCount> countTotalCommentsByYearInterface();
+	
+	@Query( value = "select * from employee department_id = ?1",nativeQuery = true)
+	public List<Employee> getEmployeeByDeptID(String id);
 }

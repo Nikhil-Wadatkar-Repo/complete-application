@@ -28,23 +28,23 @@ public class EmployeeService {
         return repo.save(employee);
     }
 
-    public Employee updateEmployee(Employee employee) {
-        Employee updatedEmployee = null;
-        Optional<Employee> existedEmployee = repo.findById(employee.getId());
-        if (existedEmployee.isPresent()) {
-            Employee newEmployee = new Employee();
-            newEmployee.setBirthdate(existedEmployee.get().getBirthdate());
-            newEmployee.setEmail(existedEmployee.get().getEmail());
-            newEmployee.setHire_date(existedEmployee.get().getHire_date());
-            newEmployee.setName(existedEmployee.get().getName());
-            newEmployee.setPhone(existedEmployee.get().getPhone());
-            newEmployee.setSalary(existedEmployee.get().getSalary());
-            newEmployee.setDepartment_id(existedEmployee.get().getDepartment_id());
-            newEmployee.setJob_id(existedEmployee.get().getJob_id());
-            updatedEmployee = repo.save(newEmployee);
-        }
-        return updatedEmployee;
-    }
+//    public Employee updateEmployee(Employee employee) {
+//        Employee updatedEmployee = null;
+//        Optional<Employee> existedEmployee = repo.findById(employee.getId());
+//        if (existedEmployee.isPresent()) {
+//            Employee newEmployee = new Employee();
+//            newEmployee.setBirthdate(existedEmployee.get().getBirthdate());
+//            newEmployee.setEmail(existedEmployee.get().getEmail());
+//            newEmployee.setHire_date(existedEmployee.get().getHire_date());
+//            newEmployee.setName(existedEmployee.get().getName());
+//            newEmployee.setPhone(existedEmployee.get().getPhone());
+//            newEmployee.setSalary(existedEmployee.get().getSalary());
+//            newEmployee.setDepartment_id(existedEmployee.get().getDepartment_id());
+//            newEmployee.setJob_id(existedEmployee.get().getJob_id());
+//            updatedEmployee = repo.save(newEmployee);
+//        }
+//        return updatedEmployee;
+//    }
 
     public Employee getByID(Integer id) {
         Optional<Employee> employeeOptional = repo.findById(id);
@@ -68,24 +68,24 @@ public class EmployeeService {
         return message;
     }
 
-    public  List<Object[]> getDepartmentwiseEmployee() {
-        Map<Integer, Integer> employeeList = null;
-        List<Object[]> departmentwiseEmployee = repo.getDepartmentwiseEmployee();
-
-        List<IDepartmentWiseCount> iDepartmentWiseCounts = repo.countTotalCommentsByYearInterface();
-        System.out.println("==========================");
-        iDepartmentWiseCounts.stream().forEach(emp->{
-            System.out.println(emp.getDeptID()+" "+emp.getTotalCount());
-        });
-        System.out.println("==========================");
-//        Optional<Map<String, Integer>> employeeOptional = ofNullable(repo.getDepartmentwiseEmployee());
-
-//        if (employeeOptional.isPresent()) {
-//            employeeList = employeeOptional.get();
+//    public  List<Object[]> getDepartmentwiseEmployee() {
+//        Map<Integer, Integer> employeeList = null;
+//        List<Object[]> departmentwiseEmployee = repo.getDepartmentwiseEmployee();
 //
-//        } else {
-//            throw new EmptyEmployeeList("Employee Not there");
-//        }
-        return departmentwiseEmployee;
-    }
+//        List<IDepartmentWiseCount> iDepartmentWiseCounts = repo.countTotalCommentsByYearInterface();
+//        System.out.println("==========================");
+//        iDepartmentWiseCounts.stream().forEach(emp->{
+//            System.out.println(emp.getDeptID()+" "+emp.getTotalCount());
+//        });
+//        System.out.println("==========================");
+////        Optional<Map<String, Integer>> employeeOptional = ofNullable(repo.getDepartmentwiseEmployee());
+//
+////        if (employeeOptional.isPresent()) {
+////            employeeList = employeeOptional.get();
+////
+////        } else {
+////            throw new EmptyEmployeeList("Employee Not there");
+////        }
+//        return departmentwiseEmployee;
+//    }
 }
