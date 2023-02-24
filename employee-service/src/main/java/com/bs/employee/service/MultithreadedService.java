@@ -28,6 +28,7 @@ public class MultithreadedService {
 		System.out.print("#################################Execution time is " + formatter.format((end - start) / 1000d)
 				+ " seconds(\"#################################");
 
+		
 		return findAll;
 	}
 
