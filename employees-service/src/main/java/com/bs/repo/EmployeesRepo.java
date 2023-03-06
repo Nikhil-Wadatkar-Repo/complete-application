@@ -16,4 +16,5 @@ public interface EmployeesRepo extends JpaRepository<Employees, Integer> {
 //	@Query(nativeQuery = true, name = "delete from region where region_Id=:1")
 	public String deleteEmployeesByEmployeeId(Integer id);
 
+//	added custom query
 }
