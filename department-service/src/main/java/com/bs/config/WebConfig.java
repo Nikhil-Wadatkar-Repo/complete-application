@@ -1,4 +1,4 @@
-package com.bs;
+package com.bs.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
